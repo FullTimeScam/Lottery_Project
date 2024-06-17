@@ -851,11 +851,11 @@
 			]
 		},
 		"Lottery.sol": {
-			"keccak256": "0x21df28d573b77bbc68494531f05a5f3562f298e3f5eec99e5e4691a735b813c0",
+			"keccak256": "0xb109b36cf908d910e280afceafe52beefbdef2c9fba43c5940155cf4f09482ee",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5aa8e0b0a24b3d21821fb7f43d86c8aa65caf329112c5ac4a57c56cf4f8f8d0c",
-				"dweb:/ipfs/QmPSFTkaFY8ppTjM91Y48VUoMKpYR4jyqkkyJEUL7P8QWF"
+				"bzz-raw://5a353412efc9b6e9860debdcb3be89e7f9556cb52a447b825e2d7c26546e0fe0",
+				"dweb:/ipfs/Qmdt8ApgD8fiL33N8kHr2BMRQknYEq9SYWgJ9vTESa3YcM"
 			]
 		}
 	},

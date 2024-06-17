@@ -5,7 +5,7 @@ import { ERC1155 } from "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-//deployed at "0x27B155e64716904d1F12a79a4Fc220707D359BC5" (slightly dffer to this version :)
+//deployed at "0x27B155e64716904d1F12a79a4Fc220707D359BC5" (slightly dffer to this version :) - this version failed to Harvest
 
 contract LotteryNFT is ERC1155, Ownable {
     using Strings for uint; //이거 말고 Strings.toString(value) 이렇게 써도 됨. // uint와 uint256은 같다.
@@ -96,7 +96,7 @@ contract LotteryNFT is ERC1155, Ownable {
     function Harvest() external onlyOwner {
         uint balance = address(this).balance;
         require(balance > 0, "No balance to Harvest");
-        (bool success, ) = payable(owner()).call{value: balance}("");
-        require(success, "Harvest failed");
+        payable(owner()).transfer(balance);
+        
     }
 }
