@@ -72,7 +72,7 @@ contract LotteryNFT is ERC1155, Ownable {
     function random() private view returns (uint) {
         address Binance15_balance = 0x21a31Ee1afC51d94C2eFcCAa2092aD1028285549; // 바이낸스15 지갑 밸런스를 난수로 활용
         address Binance16_balance = 0xDFd5293D8e347dFe59E90eFd55b2956a1343963d; // 바이낸스16 지갑 밸런스를 난수로 활용
-        return uint(keccak256(abi.encodePacked(block.difficulty, block.timestamp, msg.sender, Binance15_balance.balance, Binance16_balance.balance, address(this).balance)));
+        return uint(keccak256(abi.encodePacked(block.prevrandao, block.timestamp, msg.sender, Binance15_balance.balance, Binance16_balance.balance, address(this).balance)));
     }
 
     function determineOutcome() private view returns (uint) {

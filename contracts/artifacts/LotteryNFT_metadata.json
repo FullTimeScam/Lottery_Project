@@ -724,7 +724,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Lottery.sol": "LotteryNFT"
+			"Lottery.sol": "LotteryNFT"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -850,12 +850,12 @@
 				"dweb:/ipfs/QmVBEei6aTnvYNZp2CHYVNKyZS4q1KkjANfY39WVXZXVoT"
 			]
 		},
-		"contracts/Lottery.sol": {
-			"keccak256": "0xc2a0edd29fe884bd0fd46d427d0cade3bad49c40c07f20a2d0944e89607a2be8",
+		"Lottery.sol": {
+			"keccak256": "0x21df28d573b77bbc68494531f05a5f3562f298e3f5eec99e5e4691a735b813c0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f1dc61737305cb99081ef6b4556ce7b4950dab9cf7ac3b059cadf9634b65c4b2",
-				"dweb:/ipfs/QmVfVbkDvSY4FNaHkjL3W3C1MEFgjMuxwyqhX99gVoyGM8"
+				"bzz-raw://5aa8e0b0a24b3d21821fb7f43d86c8aa65caf329112c5ac4a57c56cf4f8f8d0c",
+				"dweb:/ipfs/QmPSFTkaFY8ppTjM91Y48VUoMKpYR4jyqkkyJEUL7P8QWF"
 			]
 		}
 	},
