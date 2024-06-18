@@ -15,11 +15,11 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 function App() {
   const recentPlays = [
     {
-      text: "0x28C6c06298d514Db089934071355E5743bf21d60: .playing",
+      text: "0x28C6c06298d514Db089934071355E5743bf21d60: .drawing",
       loading: true,
     },
     {
-      text: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2: .playing",
+      text: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2: .drawing",
       loading: true,
     },
     {
@@ -41,7 +41,7 @@ function App() {
   ];
 
   const getTextColor = (text: string) => {
-    if (text.includes(".playing")) {
+    if (text.includes(".drawing")) {
       return "white";
     }
     if (text.includes("+")) {
