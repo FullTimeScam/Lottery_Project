@@ -5,8 +5,8 @@ import { ERC1155 } from "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
+//deployed at "0xaEEef264DDbf9D6CC4737B1AbD954DC7DE9C1F1c"
 //deployed at "0x27B155e64716904d1F12a79a4Fc220707D359BC5" (slightly dffer to this version :) - this version failed to Harvest
-//deployed at "0x695F95963a7cE0b819719Bea2465091aC3Ae96b6"
 
 contract LotteryNFT is ERC1155, Ownable {
     using Strings for uint; //이거 말고 Strings.toString(value) 이렇게 써도 됨. // uint와 uint256은 같다.
@@ -100,4 +100,7 @@ contract LotteryNFT is ERC1155, Ownable {
         payable(owner()).transfer(balance);
         
     }
+
+    //  // 누구나 컨트랙트에 ETH를 보낼 수 있는 receive 함수 추가
+    // receive() external payable {}
 }

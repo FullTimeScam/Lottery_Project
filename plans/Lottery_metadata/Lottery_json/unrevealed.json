@@ -1,0 +1,27 @@
+{
+  "name": "Rug Or Ruged! #unrevealed",
+  "description": "Rug Or Ruged! Are You Degen? Try to Rug me 🚀🚀",
+  "image": "https://lavender-neat-porcupine-347.mypinata.cloud/ipfs/QmcA7aoDZEHp9WDHy6sFEX6PvfchQPkqGn6dEu5U5H57xw",
+  "attributes": [
+    {
+      "trait_type": "bg",
+      "value": "unrevealed"
+    },
+    {
+      "trait_type": "slot1",
+      "value": "unrevealed"
+    },
+    {
+      "trait_type": "slot2",
+      "value": "unrevealed"
+    },
+    {
+      "trait_type": "slot3",
+      "value": "unrevealed"
+    },
+    {
+      "trait_type": "WinOrRugged",
+      "value": "unrevealed"
+    }
+  ]
+}
