@@ -17,6 +17,7 @@ const theme = extendTheme({
       black: "#000000",
       blue: "#000080",
       white: "#FFFFFF",
+      warmYellow: "#FFF8DC",
     },
   },
 });

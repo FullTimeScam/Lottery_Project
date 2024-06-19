@@ -10,12 +10,18 @@ import {
   ListIcon,
   Spinner,
   useDisclosure,
+  Link,
+  IconButton,
+  Grid,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import { ethers, JsonRpcSigner, parseEther } from "ethers";
 import { FC, useEffect, useState } from "react";
 import LotteryAbi from "./abis/LotteryAbi.json";
 import MintModal from "./components/MintModal";
+import { FaTelegram, FaDiscord, FaXTwitter } from "react-icons/fa6";
+import MouseFollower from "./components/MouseFollowe";
+
 // import axios from "axios";
 
 const App: FC = () => {
@@ -93,27 +99,31 @@ const App: FC = () => {
 
   const recentPlays = [
     {
-      text: "user1: .drawing",
+      text: "0x28C6c06298d514Db089934071355E5743bf21d60: .drawing",
       loading: true,
     },
     {
-      text: "user2: .drawing",
+      text: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2: .drawing",
       loading: true,
     },
     {
-      text: "user3: +0.04ETH",
+      text: "0x8315177aB297bA92A06054cE80a67Ed4DBd7ed3a: +0.04ETH",
       loading: false,
     },
     {
-      text: "user4: -0.02ETH",
+      text: "0xE92d1A43df510F82C66382592a047d288f85226f: -0.02ETH",
       loading: false,
     },
     {
-      text: "user5: +0.04ETH",
+      text: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045: +0.04ETH",
       loading: false,
     },
     {
-      text: "user6: +0.04ETH",
+      text: "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B: +0.04ETH",
+      loading: false,
+    },
+    {
+      text: "0xc57eA958E33dc87c7C7951774bab9221346bA26f: -0.02ETH",
       loading: false,
     },
   ];
@@ -173,13 +183,62 @@ const App: FC = () => {
       alignItems="center"
       justifyContent="center"
       minH="100vh"
-      bg="gray.50"
+      bg="win95.warmYellow"
       width="100%"
     >
+      {/* <MouseFollower /> */}
       <Flex width="100%" mx="auto">
-        <Flex flex={1} alignItems="center" justifyContent="center">
-          left
+        {/* left영역 시작 */}
+        <Flex
+          flex={1}
+          alignItems="center"
+          justifyContent="center"
+          direction="column"
+        >
+          <Box
+            mt="auto"
+            mb={4}
+            display="flex"
+            justifyContent="space-between"
+            width="200px"
+          >
+            <Link href="https://x.com/FulltimeScam" isExternal>
+              <IconButton
+                as="span"
+                aria-label="Twitter"
+                icon={<FaXTwitter />}
+                fontSize="40px"
+                color="black"
+                _hover={{ color: "blue" }}
+                variant="ghost"
+              />
+            </Link>
+            <Link href="https://t.me/fulltime_scam" isExternal>
+              <IconButton
+                as="span"
+                aria-label="Telegram"
+                icon={<FaTelegram />}
+                fontSize="40px"
+                color="black"
+                _hover={{ color: "blue" }}
+                variant="ghost"
+              />
+            </Link>
+            <Link href="https://discord.gg/zdC7kChdjg" isExternal>
+              <IconButton
+                as="span"
+                aria-label="Discord"
+                icon={<FaDiscord />}
+                fontSize="40px"
+                color="black"
+                _hover={{ color: "blue" }}
+                variant="ghost"
+              />
+            </Link>
+          </Box>
         </Flex>
+        {/* left영역 끝 */}
+        {/* middle영역 시작 */}
         <Flex
           flex={2}
           alignItems="center"
@@ -224,7 +283,7 @@ const App: FC = () => {
 
           <Box
             bg="blue"
-            py={8}
+            py={3}
             px={3}
             boxShadow="md"
             rounded="md"
@@ -234,6 +293,14 @@ const App: FC = () => {
             maxW="800px"
             minW={"500px"}
           >
+            <Text fontSize={"xl"}>Ticket Price : 0.02ETH</Text>
+            <Text
+              fontSize={"4xl"}
+              textColor={"orange"}
+              textDecoration="underline"
+            >
+              Win Rate: 50% (No SCAM!!)
+            </Text>
             <Box fontSize={"4xl"} border={"3px solid red"} px={"17px"}>
               RUG +0.04ETH / Rugged -0.02ETH
             </Box>
@@ -275,9 +342,28 @@ const App: FC = () => {
             </Box>
           </Box>
         </Flex>
-        <Flex flex={1} alignItems="center" justifyContent="center">
-          right
+        {/* middle영역 끝 */}
+        {/* right영역 시작 */}
+        <Flex
+          flex={1}
+          alignItems="center"
+          justifyContent="center"
+          direction="column"
+          textAlign="center"
+        >
+          <Text fontSize="40px" fontWeight="bold" mb={4}>
+            OUR BACKERS
+          </Text>
+          <Grid templateColumns="repeat(2, 1fr)" gap={4}>
+            <Image src="/path/to/logo1.png" alt="Company 1" boxSize="200px" />
+            <Image src="/path/to/logo2.png" alt="Company 2" boxSize="200px" />
+            <Image src="/path/to/logo3.png" alt="Company 3" boxSize="200px" />
+            <Image src="/path/to/logo4.png" alt="Company 4" boxSize="200px" />
+            <Image src="/path/to/logo5.png" alt="Company 5" boxSize="200px" />
+            <Image src="/path/to/logo6.png" alt="Company 6" boxSize="200px" />
+          </Grid>
         </Flex>
+        {/* right영역 끝 */}
       </Flex>
     </Flex>
   );
