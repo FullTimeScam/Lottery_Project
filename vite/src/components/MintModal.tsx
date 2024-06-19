@@ -57,7 +57,7 @@ const MintModal: FC<MintModalProps> = ({
             fontWeight="bold"
             letterSpacing={"0.1em"}
           >
-            Rug Or Ruggrd
+            Rug Or Rugged
           </ModalHeader>
           {isOpen && <ReactConfetti width={width} height={height} />}
           <ModalCloseButton
