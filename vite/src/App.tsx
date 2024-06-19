@@ -353,17 +353,24 @@ const App: FC = () => {
           direction="column"
           textAlign="center"
         >
-          <Text fontSize="40px" fontWeight="bold" mb={4}>
-            OUR BACKERS
-          </Text>
-          <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-            <Image src="./SBF.png" alt="FTX" boxSize="200px" />
-            <Image src="./Kwon-Do.png" alt="Kwon.Do" boxSize="200px" />
-            <Image src="./Quadriga.png" alt="Quadriga" boxSize="200px" />
-            <Image src="./bitconnect.png" alt="BitConnect" boxSize="200px" />
-            <Image src="./OneCoin.png" alt="OneCoin" boxSize="200px" />
-            <Image src="./SQUID.png" alt="$SQUID" boxSize="200px" />
-          </Grid>
+          <Box
+            border={"2px solid"}
+            borderColor="win95.gray"
+            rounded={"20px"}
+            p={4}
+          >
+            <Text fontSize="40px" fontWeight="bold" mb={4}>
+              OUR BACKERS
+            </Text>
+            <Grid templateColumns="repeat(2, 1fr)" gap={4}>
+              <Image src="./SBF.png" alt="FTX" boxSize="200px" />
+              <Image src="./Kwon-Do.png" alt="Kwon.Do" boxSize="200px" />
+              <Image src="./Quadriga.png" alt="Quadriga" boxSize="200px" />
+              <Image src="./bitconnect.png" alt="BitConnect" boxSize="200px" />
+              <Image src="./OneCoin.png" alt="OneCoin" boxSize="200px" />
+              <Image src="./SQUID.png" alt="$SQUID" boxSize="200px" />
+            </Grid>
+          </Box>
         </Flex>
         {/* right영역 끝 */}
       </Flex>
