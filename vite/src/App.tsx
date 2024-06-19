@@ -355,12 +355,12 @@ const App: FC = () => {
             OUR BACKERS
           </Text>
           <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-            <Image src="/path/to/logo1.png" alt="OneCoin" boxSize="200px" />
-            <Image src="/path/to/logo2.png" alt="Company 2" boxSize="200px" />
-            <Image src="/path/to/logo3.png" alt="Company 3" boxSize="200px" />
-            <Image src="/path/to/logo4.png" alt="Company 4" boxSize="200px" />
-            <Image src="/path/to/logo5.png" alt="Company 5" boxSize="200px" />
-            <Image src="/path/to/logo6.png" alt="Company 6" boxSize="200px" />
+            <Image src="./SBF.png" alt="FTX" boxSize="200px" />
+            <Image src="./Kwon-Do.png" alt="Kwon.Do" boxSize="200px" />
+            <Image src="./Quadriga.png" alt="Quadriga" boxSize="200px" />
+            <Image src="./bitconnect.png" alt="BitConnect" boxSize="200px" />
+            <Image src="./OneCoin.png" alt="OneCoin" boxSize="200px" />
+            <Image src="./SQUID.png" alt="$SQUID" boxSize="200px" />
           </Grid>
         </Flex>
         {/* right영역 끝 */}
