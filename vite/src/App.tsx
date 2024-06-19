@@ -9,11 +9,13 @@ import {
   ListItem,
   ListIcon,
   Spinner,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import { ethers, JsonRpcSigner, parseEther } from "ethers";
 import { FC, useEffect, useState } from "react";
 import LotteryAbi from "./abis/LotteryAbi.json";
+import MintModal from "./components/MintModal";
 // import axios from "axios";
 
 const App: FC = () => {
@@ -21,8 +23,13 @@ const App: FC = () => {
   const [buttonText, setButtonText] = useState<string>("CONNECT WALLET");
   const [contract, setContract] = useState<ethers.Contract | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [buyer, setBuyer] = useState<boolean | null>(null); // 나중에 RECENT PLAYS 만들 때 사용하기
+  const [isWinner, setIsWinner] = useState<boolean | null>(null);
+  const [tokenId, setTokenID] = useState<number | null>(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const contractAddress = "0xaEEef264DDbf9D6CC4737B1AbD954DC7DE9C1F1c";
+  // const contractAddress = "0xaEEef264DDbf9D6CC4737B1AbD954DC7DE9C1F1c"; // old contract
+  const contractAddress = "0xf0AFb3688035a824C1c0E592A3149fBd231E1135";
 
   const getSigner = async () => {
     if (!window.ethereum) return;
@@ -46,12 +53,14 @@ const App: FC = () => {
     try {
       setIsLoading(true);
 
-      console.log(parseEther("0.02046"));
+      // console.log(parseEther("0.02046"));
       const response = await contract?.purchaseTicket({
-        value: parseEther("0.02046"),
+        value: parseEther("0.02046001"),
       });
 
       await response.wait();
+
+      onOpen();
 
       setIsLoading(false);
     } catch (error) {
@@ -136,6 +145,18 @@ const App: FC = () => {
     );
   };
 
+  // on을 쓰면 스마트컨트랙트에서 일어나는 event를 청취할 수 있다.
+  contract?.on("TicketPurchased", (_buyer, _tokenId, _isWinner) => {
+    //_buyer은 모달창에서 사용하기
+    // console.log(
+    //   `Ticket Purchased - Buyer: ${_buyer}, Token ID: ${_tokenId}, Is Winner: ${_isWinner}`
+    // ); //테스트 완료
+    setIsWinner(_isWinner);
+    setTokenID(_tokenId);
+  });
+  // console.log(isWinner);
+  // console.log(tokenId);
+
   useEffect(() => {
     if (!signer) return;
 
@@ -193,6 +214,12 @@ const App: FC = () => {
             >
               {buttonText}
             </Button>
+            <MintModal
+              isOpen={isOpen}
+              onClose={onClose}
+              isWinner={isWinner}
+              tokenId={tokenId}
+            />
           </Box>
 
           <Box

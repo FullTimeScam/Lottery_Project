@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
 //deployed at "0xaEEef264DDbf9D6CC4737B1AbD954DC7DE9C1F1c"
-//deployed at "0x27B155e64716904d1F12a79a4Fc220707D359BC5" (slightly dffer to this version :) - this version failed to Harvest
+
 
 contract LotteryNFT is ERC1155, Ownable {
     using Strings for uint; //이거 말고 Strings.toString(value) 이렇게 써도 됨. // uint와 uint256은 같다.
@@ -49,7 +49,7 @@ contract LotteryNFT is ERC1155, Ownable {
     function purchaseTicket() public payable {
         uint fee = (ticketPrice * FEE_RATE_BY_1000) / 1000; // 2.3% 수수료 계산
         uint netTicketPrice = ticketPrice + fee;
-        require(msg.value == netTicketPrice, "Incorrect ticket price including fee");
+        require(msg.value >= netTicketPrice, "Incorrect ticket price including fee");
        // require(issuedTickets < totalTickets, "All tickets sold out"); - 총 발행량까지 찼는지 확인하는 코드.
 
         uint tokenId = determineOutcome();
@@ -77,8 +77,8 @@ contract LotteryNFT is ERC1155, Ownable {
     }
 
     function determineOutcome() private view returns (uint) {
-        uint rand = random() % 2; // 50% 확률
-        if (rand == 0) {
+        uint rand = random() % 100; // 50% 확률
+        if (rand <45) {
             return WINNING_TOKEN_ID;
         } else {
             return (random() % 7); // 0 ~ 6: 미당첨 티켓 ID

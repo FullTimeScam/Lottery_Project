@@ -9,6 +9,16 @@ const theme = extendTheme({
     body: "VT323, sans-serif",
     heading: "VT323, sans-serif",
   },
+  colors: {
+    win95: {
+      gray: "#C3C3C3",
+      lightGray: "#DFDFDF",
+      darkGray: "#7A7A7A",
+      black: "#000000",
+      blue: "#000080",
+      white: "#FFFFFF",
+    },
+  },
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
