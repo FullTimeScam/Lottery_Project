@@ -20,7 +20,7 @@ import { FC, useEffect, useState } from "react";
 import LotteryAbi from "./abis/LotteryAbi.json";
 import MintModal from "./components/MintModal";
 import { FaTelegram, FaDiscord, FaXTwitter } from "react-icons/fa6";
-import MouseFollower from "./components/MouseFollowe";
+// import MouseFollower from "./components/MouseFollowe";
 
 // import axios from "axios";
 
