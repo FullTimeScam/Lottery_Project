@@ -308,7 +308,9 @@ const App: FC = () => {
               Try to Rug me, Degen :)
             </Text>
 
-            <Text mb={2}>RECENT PLAYS</Text>
+            <Text mb={2} fontSize={"25px"}>
+              RECENT PLAYS
+            </Text>
             <Box
               border="1px solid white"
               w="full"
