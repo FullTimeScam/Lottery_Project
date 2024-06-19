@@ -20,6 +20,7 @@ const App: FC = () => {
   const [signer, setSigner] = useState<JsonRpcSigner | null>(null);
   const [buttonText, setButtonText] = useState<string>("CONNECT WALLET");
   const [contract, setContract] = useState<ethers.Contract | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const contractAddress = "0xaEEef264DDbf9D6CC4737B1AbD954DC7DE9C1F1c";
 
@@ -43,14 +44,20 @@ const App: FC = () => {
 
   const purchaseTicket = async () => {
     try {
+      setIsLoading(true);
+
       console.log(parseEther("0.02046"));
       const response = await contract?.purchaseTicket({
         value: parseEther("0.02046"),
       });
 
       await response.wait();
+
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
+
+      setIsLoading(false);
     }
   };
 
@@ -174,7 +181,7 @@ const App: FC = () => {
             />
             <Button
               onClick={signer ? purchaseTicket : onClickMetamask}
-              // onClick={onClickMetamask}
+              isLoading={isLoading}
               colorScheme="purple"
               size="lg"
               mb={8}
