@@ -101,6 +101,6 @@ contract LotteryNFT is ERC1155, Ownable {
         
     }
 
-    //  // 누구나 컨트랙트에 ETH를 보낼 수 있는 receive 함수 추가
-    // receive() external payable {}
+     // 누구나 컨트랙트에 ETH를 보낼 수 있는 receive 함수 추가
+    receive() external payable {}
 }

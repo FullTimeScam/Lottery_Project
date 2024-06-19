@@ -591,6 +591,10 @@
 				],
 				"stateMutability": "pure",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -724,7 +728,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Lottery_complete_1.sol": "LotteryNFT"
+			"Lottery.sol": "LotteryNFT"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -850,12 +854,12 @@
 				"dweb:/ipfs/QmVBEei6aTnvYNZp2CHYVNKyZS4q1KkjANfY39WVXZXVoT"
 			]
 		},
-		"contracts/Lottery_complete_1.sol": {
-			"keccak256": "0x93d3630be3ed628d295af78c26640edb7b4bd31b47983bae522873c66f5e96c3",
+		"Lottery.sol": {
+			"keccak256": "0xa26e2bdaf58fdff56d513261d3d7cfc7dbe97f3113e67c350b8074781a7c17ca",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2763fc8d04908d4eae21e3253700f109e671065cbbb5a07bde2dd2f011006b81",
-				"dweb:/ipfs/QmfNZvHM5L1vMAnv2JBnXMrub4J4uErNnDVovFegPEumHU"
+				"bzz-raw://1c82ab2c0db9ab69ba960542d1e43b35150f526664ec6287f6ba8849f7c2903d",
+				"dweb:/ipfs/QmUkhiib29Pw4t9YK9GH6sLo7KHWabKs4yD3KH88i8RHhj"
 			]
 		}
 	},

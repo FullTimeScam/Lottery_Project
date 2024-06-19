@@ -11,24 +11,63 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
-import { ethers, JsonRpcSigner } from "ethers";
+import { ethers, JsonRpcSigner, parseEther } from "ethers";
 import { FC, useEffect, useState } from "react";
+import LotteryAbi from "./abis/LotteryAbi.json";
+// import axios from "axios";
 
 const App: FC = () => {
   const [signer, setSigner] = useState<JsonRpcSigner | null>(null);
   const [buttonText, setButtonText] = useState<string>("CONNECT WALLET");
+  const [contract, setContract] = useState<ethers.Contract | null>(null);
+
+  const contractAddress = "0xaEEef264DDbf9D6CC4737B1AbD954DC7DE9C1F1c";
+
+  const getSigner = async () => {
+    if (!window.ethereum) return;
+
+    const provider = new ethers.BrowserProvider(window.ethereum);
+
+    setSigner(await provider.getSigner());
+  };
 
   const onClickMetamask = async () => {
     try {
-      if (!window.ethereum) return;
+      getSigner();
 
-      const provider = new ethers.BrowserProvider(window.ethereum);
-
-      setSigner(await provider.getSigner());
+      localStorage.setItem("isLogin", "true");
     } catch (error) {
       console.error(error);
     }
   };
+
+  const purchaseTicket = async () => {
+    try {
+      console.log(parseEther("0.02046"));
+      const response = await contract?.purchaseTicket({
+        value: parseEther("0.02046"),
+      });
+
+      await response.wait();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // 로그아웃 기능 없음!
+  // const onClickLogout = () => {
+  //   setSigner(null);
+
+  //   localStorage.removeItem("isLogin");
+  // };
+
+  useEffect(() => {
+    const localIsLogin = localStorage.getItem("isLogin");
+
+    if (localIsLogin === "true") {
+      getSigner();
+    }
+  }, []);
 
   useEffect(() => {
     if (signer) {
@@ -38,27 +77,27 @@ const App: FC = () => {
 
   const recentPlays = [
     {
-      text: "0x28C6c06298d514Db089934071355E5743bf21d60: .drawing",
+      text: "user1: .drawing",
       loading: true,
     },
     {
-      text: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2: .drawing",
+      text: "user2: .drawing",
       loading: true,
     },
     {
-      text: "0x8315177aB297bA92A06054cE80a67Ed4DBd7ed3a: +0.02ETH",
+      text: "user3: +0.04ETH",
       loading: false,
     },
     {
-      text: "0xE92d1A43df510F82C66382592a047d288f85226f: -0.01ETH",
+      text: "user4: -0.02ETH",
       loading: false,
     },
     {
-      text: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045: +0.02ETH",
+      text: "user5: +0.04ETH",
       loading: false,
     },
     {
-      text: "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B: +0.02ETH",
+      text: "user6: +0.04ETH",
       loading: false,
     },
   ];
@@ -89,6 +128,17 @@ const App: FC = () => {
       </>
     );
   };
+
+  useEffect(() => {
+    if (!signer) return;
+
+    const lotteryContract = new ethers.Contract(
+      contractAddress,
+      LotteryAbi,
+      signer
+    );
+    setContract(lotteryContract);
+  }, [signer]);
 
   return (
     <Flex
@@ -123,7 +173,8 @@ const App: FC = () => {
               maxW="500px"
             />
             <Button
-              onClick={onClickMetamask}
+              onClick={signer ? purchaseTicket : onClickMetamask}
+              // onClick={onClickMetamask}
               colorScheme="purple"
               size="lg"
               mb={8}
@@ -150,7 +201,7 @@ const App: FC = () => {
             minW={"500px"}
           >
             <Box fontSize={"4xl"} border={"3px solid red"} px={"17px"}>
-              RUG +0.02ETH / Rugged -0.01ETH
+              RUG +0.04ETH / Rugged -0.02ETH
             </Box>
             <Text mb={4} fontSize={"5xl"}>
               Try to Rug me, Degen :)
