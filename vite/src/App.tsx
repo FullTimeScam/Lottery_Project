@@ -355,7 +355,7 @@ const App: FC = () => {
             OUR BACKERS
           </Text>
           <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-            <Image src="/path/to/logo1.png" alt="Company 1" boxSize="200px" />
+            <Image src="/path/to/logo1.png" alt="OneCoin" boxSize="200px" />
             <Image src="/path/to/logo2.png" alt="Company 2" boxSize="200px" />
             <Image src="/path/to/logo3.png" alt="Company 3" boxSize="200px" />
             <Image src="/path/to/logo4.png" alt="Company 4" boxSize="200px" />

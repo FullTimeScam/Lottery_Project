@@ -42,9 +42,6 @@
 *.seed
 *.backup
 
-# Ignoring image files if not necessary for the project version control
-/public/*.png
-
 # Ignore the generated artifacts directory
 /artifacts/
 
