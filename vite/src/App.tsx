@@ -11,8 +11,31 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
+import { ethers, JsonRpcSigner } from "ethers";
+import { FC, useEffect, useState } from "react";
 
-function App() {
+const App: FC = () => {
+  const [signer, setSigner] = useState<JsonRpcSigner | null>(null);
+  const [buttonText, setButtonText] = useState<string>("CONNECT WALLET");
+
+  const onClickMetamask = async () => {
+    try {
+      if (!window.ethereum) return;
+
+      const provider = new ethers.BrowserProvider(window.ethereum);
+
+      setSigner(await provider.getSigner());
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    if (signer) {
+      setButtonText("BUY TICKET");
+    }
+  }, [signer]);
+
   const recentPlays = [
     {
       text: "0x28C6c06298d514Db089934071355E5743bf21d60: .drawing",
@@ -100,6 +123,7 @@ function App() {
               maxW="500px"
             />
             <Button
+              onClick={onClickMetamask}
               colorScheme="purple"
               size="lg"
               mb={8}
@@ -109,7 +133,7 @@ function App() {
               fontSize={"40px"}
               textColor={"white"}
             >
-              CONNECT WALLET
+              {buttonText}
             </Button>
           </Box>
 
@@ -172,6 +196,6 @@ function App() {
       </Flex>
     </Flex>
   );
-}
+};
 
 export default App;
