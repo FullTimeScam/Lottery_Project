@@ -78,7 +78,7 @@ contract LotteryNFT is ERC1155, Ownable {
 
     function determineOutcome() private view returns (uint) {
         uint rand = random() % 100; // 50% 확률
-        if (rand <45) {
+        if (rand <50) {
             return WINNING_TOKEN_ID;
         } else {
             return (random() % 7); // 0 ~ 6: 미당첨 티켓 ID
